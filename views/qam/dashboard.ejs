@@ -1,0 +1,75 @@
+<%- include('../_layout/header') %> 
+
+  <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+
+
+<script>
+  
+    var dataPoints =[]
+      <% ideas.forEach(function(i, index){ %>
+			dataPoints[<%= index %>] = { label: "<%- i.title %>" , y: <%= i.viewBy.length %>  },	
+            <% }) %>
+    
+        console.log(dataPoints)
+		
+    
+    window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title: {
+		text: "view and ideas"
+	},
+	axisY: {
+		title: "View",
+	},
+	axisX: {
+		title: "Ideas"
+	},
+	data: [{
+		type: "column",
+		dataPoints: dataPoints
+	}]
+});
+chart.render();
+
+Pusher.logToConsole = true;
+
+    var pusher = new Pusher('76f245f1d43cbfa8bb93', {
+      cluster: 'ap1'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      dataPoints = dataPoints.map(x =>{
+          if(x.label == data.os){
+              x.y += data.points;
+              return x
+          }else{
+            return x
+          }
+      });
+    chart.render()
+    });
+
+    var channel = pusher.subscribe('my-channel1');
+    channel.bind('my-event1', function(data) {
+        dataPoints.push( {label: data.os , y: 0})
+        chart.render()
+    });
+
+}
+
+
+   
+</script>
+
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
+
+
+<%- include('../_layout/footer')  %> 

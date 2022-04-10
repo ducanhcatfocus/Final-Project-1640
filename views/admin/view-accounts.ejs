@@ -1,0 +1,32 @@
+<%- include('../_layout/header') %> 
+
+
+<h2 class="page-title">Accounts</h2>
+<a class="edit" href="/admin/create_account"><i class="bi bi-plus-square"></i> New account</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if(users != ''){%> <% users.forEach(function(user, index){ %>
+              <tr>
+                <td><%- index %></td>
+                <td><%- user.email %></td>
+                <td><%- user.department %> </td>
+                <td><%- user.role %></td>
+                <td>
+                  <a href="/admin/edit_account/<%- user._id %>" class="edit"><i class="bi bi-pencil-square"></i></a>
+                  <a href="/admin/delete_account/<%- user._id %>" class="delete" onclick=""><i class="bi bi-trash"></i></a>
+                </td>
+              </tr>
+              <% }) %> 
+        <% } %>
+    </tbody>
+</table>
+<%- include('../_layout/footer')  %> 

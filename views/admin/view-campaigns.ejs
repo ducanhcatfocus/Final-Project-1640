@@ -1,0 +1,38 @@
+<%- include('../_layout/header') %> 
+
+<h2 class="page-title">Campaigns</h2>
+<a href="/admin/create_campaign" class="edit"><i class="bi bi-plus-square"></i> New campaign</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>First Closure</th>
+            <th>Final Closure</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if(campaigns != ''){%> <% campaigns.forEach(function(campaign, index){ %>
+              <tr>
+                <td><%- index %></td>
+                <td><a href="/campaign_detail/<%= campaign._id %>"><%-campaign.title%></a></td>
+                <td><%- campaign.first_closure.getMonth() + 1 %>/<%- campaign.first_closure.getDate()%>/<%- campaign.first_closure.getFullYear() %> <%- campaign.first_closure.getHours()%>:<%- campaign.first_closure.getMinutes() %></td>
+                <td><%- campaign.final_closure.getMonth() + 1 %>/<%- campaign.final_closure.getDate()%>/<%- campaign.final_closure.getFullYear() %> <%- campaign.final_closure.getHours()%>:<%- campaign.final_closure.getMinutes() %></td>
+                <% if(campaign.first_closure > current){%>
+                    <td style="color: green;">Open</td>
+                <% }else if(campaign.first_closure <= current && campaign.final_closure > current){%> 
+                    <td style="color: orange;">First Closure Closed</td>
+                <%}else{%>
+                    <td style="color: red;">Closed</td>
+                <% } %> 
+                <td>
+                    <a href="/admin/campaign/<%- campaign._id %>" class="edit" onclick=""><i class="bi bi-pencil-square"></i></a>
+                    <a href="/admin/delete_campaign/<%- campaign._id %>" class="delete" onclick=""><i class="bi bi-trash"></i></a>
+                </td>
+              </tr>
+              <% }) %> 
+        <% } %>
+    </tbody>
+</table>
+<%- include('../_layout/footer')  %> 

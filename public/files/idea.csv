@@ -1,0 +1,5 @@
+_id,campaign_id,user_id,title,content,numberOfViews,numberOfLikes,numberOfDislikes,numberOfComments,createdAt
+62529b1caf8ea79361c803d6,62514208357fed535e5c1d59,624d41c2733dd89d774579be, aaaaaaaaaaaaaaaaaaaaaaaaa,"<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+",41,1,0,8,Sun Apr 10 2022 15:53:48 GMT+0700 (Indochina Time)
+62529e46af8ea79361c8047f,62514208357fed535e5c1d59,624d41c2733dd89d774579be, dasdad,"<p>asdasdasd</p>
+",11,0,1,1,Sun Apr 10 2022 16:07:18 GMT+0700 (Indochina Time)

@@ -1,0 +1,58 @@
+<%- include('_layout/header') %> 
+
+
+<div class="row row-cols-1 row-cols-md-3">
+<% if(campaigns != ''){%> <%
+campaigns.forEach(function(campaign, index){ %>
+
+  <div class="col mb-4">
+    <div class="card my-3 p-3 bg-light rounded shadow-sm h-100">
+      <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+          <li class="nav-item">
+            <h5><%- campaign.title %></h5>
+          </li>
+          <li class="nav-item ml-auto">
+            <% if(campaign.first_closure > current){%>
+            <h5 style="color: green">Open</h5>
+            <% }else if(campaign.first_closure <= current &&
+            campaign.final_closure > current){%>
+            <h5 style="color: orange">First closure closed</h5>
+            <%}else{%>
+            <h5 style="color: red">Closed</h5>
+            <% } %>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <% if( campaign.name.length > 60){%>
+        <p class="card-text"><%- campaign.name.slice(0 ,60)%> ...</p>
+        <% }else{ %> 
+          <p class="card-text"><%- campaign.name %></p>
+        <% } %> 
+        <p class="card-text">
+          <i class="bi bi-calendar"></i> First closual date: <%- campaign.first_closure.getMonth() + 1 %>/<%-
+          campaign.final_closure.getDate()%>/<%-
+          campaign.final_closure.getFullYear() %> <%-
+          campaign.final_closure.getHours()%>:<%-
+          campaign.final_closure.getMinutes() %>
+        </p>
+        <p class="card-text">
+          <i class="bi bi-calendar-fill"></i> Final closual date: <%- campaign.final_closure.getMonth() + 1 %>/<%-
+          campaign.final_closure.getDate()%>/<%-
+          campaign.final_closure.getFullYear() %> <%-
+          campaign.final_closure.getHours()%>:<%-
+          campaign.final_closure.getMinutes() %>
+        </p>
+        <p><a class="btn btn-primary stretched-link" href="/campaign_detail/<%= campaign._id %>" role="button">View Detail  &raquo;</a></p>
+      </div>
+    </div>
+  </div>
+
+
+<% }) %> 
+<% } %> 
+</div>
+
+
+<%- include('_layout/footer') %>

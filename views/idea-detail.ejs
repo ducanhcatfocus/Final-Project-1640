@@ -1,0 +1,139 @@
+<%- include('_layout/header') %>
+
+<div class="row">
+  <div class="col">
+    <div class="card my-3">
+      <div class="card-title my-3 mx-3">
+        <h3>@anonymous</h3>
+        <i
+          ><small
+            >Submitted at: <%- idea.createdAt.getMonth() + 1 %>/<%-
+            idea.createdAt.getDate()%>/<%- idea.createdAt.getFullYear() %>
+          </small>
+        </i>
+      </div>
+      <div class="card-body">
+        <% if(idea != ''){%>
+        <div class=""><%- idea.content %></div>
+        <div class="row">
+          <% idea.upload_file.forEach(function(file, index){ %>
+          <div class="col-md-4 py-1">
+            <% if(file.mimetype.includes('image')){ %>
+            <img
+              src="/uploads/<%= idea.campaign_id %>/<%= file.default_image %> "
+              width="100px"
+              height="100px"
+              class="w-100"
+              alt="..."
+            />
+            <% }else{ %>
+            <img
+              src="/uploads/<%= file.default_image %>"
+              width="100px"
+              height="100px"
+              class="w-100"
+              alt="..."
+            />
+            <% } %>
+            <a
+              href="/uploads/<%= idea.campaign_id %>/<%= file.filename %>"
+              download="<%= file.filename %>"
+              ><i class="fa fa-download"></i> <%= file.filename.slice(0, 25) %>
+            </a>
+          </div>
+          <% }) %>
+        </div>
+
+        <div class="row text-center">
+          <div class="col-3">
+            <% if(likeState.isLike){ %>
+            <form action="/unlike/<%= idea._id %> " method="get">
+              <button class="btn btn-default">
+                <i class="bi bi-hand-thumbs-up-fill"></i><%= idea.numberOfLikes
+                %>
+              </button>
+            </form>
+            <% } else{ %>
+            <form
+              action="/like/<%= idea._id %>?state=<%= likeState.isDislike %>"
+              method="post"
+            >
+              <button class="btn btn-default">
+                <i class="bi bi-hand-thumbs-up"></i><%= idea.numberOfLikes %>
+              </button>
+            </form>
+            <% } %>
+          </div>
+          <div class="col-3">
+            <% if(likeState.isDislike){ %>
+            <form action="/unDislike/<%= idea._id %> " method="get">
+              <button class="btn btn-deflaut">
+                <i class="bi bi-hand-thumbs-down-fill"></i><%=
+                idea.numberOfDislikes%>
+              </button>
+            </form>
+            <% } else{ %>
+            <form
+              action="/dislike/<%= idea._id %>?state=<%= likeState.isLike %>"
+              method="post"
+            >
+              <button class="btn btn-default">
+                <i class="bi bi-hand-thumbs-down"></i><%=
+                idea.numberOfDislikes%>
+              </button>
+            </form>
+            <% } %>
+          </div>
+           <div class="col-3 pt-2">
+            <i class="bi bi-eye"></i> <%= idea.viewBy.length %>
+          </div>
+          <div class="col-3 pt-2">
+            <i class="bi bi-chat-left-text"></i> <%= idea.comments.length %>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <div
+      class="align-items-center p-3 my-3 text-white-50 bg-white rounded shadow-sm"
+    >
+        <form
+          action="/comment/<%= idea._id %> "
+          method="post"
+        >
+          <div class="form-group">
+            <input
+              type="text"
+              name="comment"
+              class="form-control"
+              required="true"
+              placeholder="Comment anonymously"
+            />
+          </div>
+        </form>
+    </div>
+  </div>
+  <div class="col">
+    <div class="my-3 p-3 bg-light rounded shadow-sm" >
+      <h6 class="border-bottom border-gray pb-2 mb-0" >Recent comments</h6>
+      <% if(idea.comments != ''){%> <% idea.comments.forEach(function(comment,
+      index){ %>
+      <div class="media text-muted pt-3">
+        <img src="https://freesvg.org/img/user-spy.png" alt="" width="32"
+          height="32">
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-dark">@anonymous  
+          <small><%- comment.commentedAt.getMonth() + 1 %>/<%-
+          comment.commentedAt.getDate()%>/<%-
+          comment.commentedAt.getFullYear() %> <%-
+          comment.commentedAt.getHours()%>:<%-
+          comment.commentedAt.getMinutes() %></small></strong>
+          <%= comment.content %> 
+        </p>
+      </div>
+      <% }) %> <% } %>
+    </div>
+  </div>
+</div>
+
+<%- include('_layout/footer') %>

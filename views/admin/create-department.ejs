@@ -1,0 +1,33 @@
+<%- include('../_layout/header') %> 
+
+<h2 class="page-title" >Departments</h2>
+<br><br>
+
+<form action="/admin/create_department" method="post">
+    <div class="form-group">
+        <label for="">Add Department</label>
+        <input type="text" name="name" class="form-control" placeholder="Department name" required="true" >
+    </div>
+    <button class="btn btn-primary">Save</button>
+</form>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Department</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if(departments != ''){%> <% departments.forEach(function(department, index){ %>
+              <tr>
+                <td><%- index %></td>
+                <td><%- department.department_name %></td>
+              </tr>
+              <% }) %> 
+        <% } %>
+    </tbody>
+</table>
+
+<%- include('../_layout/footer')  %> 

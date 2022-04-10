@@ -1,0 +1,287 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+main {
+  min-height: 100vh;
+}
+
+body {
+  background-color: #eff3f6;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: red;
+  text-decoration: none;
+}
+
+a:hover {
+  color: pink;
+  text-decoration: none;
+}
+
+a.edit {
+  color: blue;
+}
+
+a.delete {
+  color: red;
+}
+
+.container-fluid {
+  /* height: 100%; */
+  padding-left: 0px;
+}
+
+#sidebarMenu {
+  background-color: #3f4d67;
+}
+
+.container-area {
+  /*display: flex;*/
+  min-height: 100vh;
+}
+
+.container-page {
+  /*margin: 0px 30px;*/
+  margin-top: 50px;
+  min-height: 100vh;
+  margin-left: 250px;
+  transition: 1s all;
+}
+
+.container {
+  padding-left: 200px;
+  width: 100%;
+  transition: 1s all;
+}
+
+.non-pl {
+  padding-left: 0px;
+}
+
+.side-bar {
+  position: fixed;
+  max-width: 200px;
+  width: 100%;
+  background-color: #3f4d67;
+  z-index: 100;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  height: 100%;
+}
+
+.side-bar-content {
+  position: fixed;
+  width: 200px;
+}
+
+.side-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.top-header {
+  position: sticky;
+  top: 0;
+  /* background-color: #343a40; */
+  background-color: #343a40;
+  display: flex;
+  height: 80px;
+  box-shadow: 1px 0 20px 0 #3f4d67;
+  z-index: 150;
+  width: 100%;
+}
+
+.nav-header {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.link-header {
+  padding: 0 20px;
+  text-align: center;
+}
+
+.nav-link-top {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  /* background: linear-gradient(-45deg, rgba(52, 58, 64, 0), rgb(52, 58, 64)); */
+  background-color: #343a40;
+  /* box-shadow: 0px 4px 10px 0px; */
+  height: 80px;
+}
+
+.nav-link-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link-top .link-header:first-child {
+  width: 100%;
+}
+
+.nav-link-top .link-header:last-child {
+  /* position: absolute; */
+  /* right: 0px;
+    top: 50%; */
+  /* transform: translate(0px, -50%); */
+  padding: 0px 10px;
+}
+.nav-link-topp {
+  margin-left: 65%;
+}
+.link-header a {
+  font-size: 25px;
+}
+
+.link-header.hamburger a {
+  font-size: 45px;
+}
+
+.header .link:first-child {
+  padding-left: 0px;
+}
+
+.acc {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.img-acc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.img-acc img {
+  height: 40px;
+  border-radius: 50%;
+}
+
+.img-acc svg {
+  position: absolute;
+  bottom: 7px;
+  color: white;
+}
+
+.img-acc:hover svg {
+  animation: img 1s infinite;
+}
+
+.side-bar a {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.side-bar .link-header.active a {
+  color: aliceblue;
+}
+
+.side-bar .link-header {
+  display: none;
+  align-items: center;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 3rem;
+  position: relative;
+  text-align: left;
+  font-weight: 0 !important;
+}
+
+.side-bar .link-header button {
+  padding: 0px;
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.title-bar {
+  padding: 1.75rem 1rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #e8edf7;
+}
+
+.cate-bar {
+  padding: 0rem 0rem 0.25rem 0rem;
+}
+
+.cate-bar > div:hover {
+  color: #1dddb4;
+}
+
+.cate-bar a:hover {
+  color: #1dddb4 !important;
+  text-decoration: none;
+}
+
+.cate-bar-title {
+  display: flex;
+  align-items: center;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  position: relative;
+  color: #a9b7d0;
+  cursor: pointer;
+}
+
+.cate-bar-title.active {
+  background-color: #333f54;
+  color: #fff;
+}
+
+.cate-bar-title span {
+  position: absolute;
+  right: 0;
+}
+
+.cate-bar-title i {
+  margin-right: 10px;
+}
+
+.cate-bar-link {
+  background: #39465e;
+}
+
+.cate-bar-link a {
+  color: #a9b7d0 !important;
+}
+
+@keyframes img {
+  0% {
+    bottom: 7px;
+  }
+  50% {
+    bottom: 5px;
+  }
+  100% {
+    bottom: 3px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .container {
+    padding-left: 0px;
+  }
+
+  .container-page {
+    padding-left: 0px;
+  }
+}

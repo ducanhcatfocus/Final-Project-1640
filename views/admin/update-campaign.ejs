@@ -1,0 +1,45 @@
+<%- include('../_layout/header') %> 
+
+<h2 class="page-title" >Update Campaign</h2>
+<a href="/admin/campaigns" class="btn btn-primary">Back to all campaigns</a>
+<br><br>
+
+<form action="/admin/campaign/<%= campaign._id %> " method="post">
+    <div class="form-group">
+        <label for="">Title</label>
+        <input type="text" name="title" id="" class="form-control" placeholder="Enter email" required="true" value="<%= campaign.title %> " >
+    </div>
+    <div class="form-group">
+        <label for="">Content</label>
+        <textarea name="content" id="ta" cols="30" rows="10"><%= campaign.name %></textarea>
+    </div>
+    <div class="form-group">
+        <label for="">Category</label>
+        <select name="category" id="" class="form-control">
+             <% if(categories != ''){%> <% categories.forEach(function(category, index){ %>
+                <option value="<%= category._id %>"><%= category.category %></option>
+              <% }) %> 
+        <% } %>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="">First Closure</label>
+        <input type="datetime-local" name="first_closure" id="" class="form-control" value="<%= date1st %>">
+    </div>
+    <div class="form-group">
+        <label for="">Final Closure</label>
+        <input type="datetime-local" name="final_closure" id="" class="form-control" value="<%= date2rd %>">
+    </div>
+    <button class="btn btn-primary">Submit</button>
+</form>
+<%- include('../_layout/footer')  %> 
+<script>
+    let dateInput = document.getElementById("start-date");
+    dateInput.min = new Date().toISOString('yyyy-mm-dd').split(".")[0];
+    let dateInput2 = document.getElementById("start-date2");
+    dateInput2.min = new Date().toISOString('yyyy-mm-dd').split(".")[0];
+</script>
+
+    
+
+
