@@ -3,9 +3,10 @@
     <div class="container">
         <div class="content-submit col-10">
             <h1>Create new category</h1>
-        <div>
-            <div class="form-group">
-            <input
+       
+            <form action="/qam/create_category" method="post"> 
+                <div class="form-group">
+                    <input
                 placeholder="Category Name"
                 type="text"
                 class="form-control"
@@ -13,13 +14,13 @@
                 name="name"
                 maxlength="15"
                 minlength="5"
-            />
-            </div>
+                    />
+                    </div>
 
-            <div class="text-center">
-            <input type="submit" class="btn btn-primary col-3" value="Save" />
-            </div>
-        </div>
+                <div class="text-center">
+                <button class="btn btn-primary">Save</button>
+                </div>
+            </form>
         </div>
     </div>
     <div class="pt-5">
@@ -53,5 +54,5 @@
             </table>
         </div>
     </div>
-</div>
+
 <%- include('../_layout/footer')  %> 
