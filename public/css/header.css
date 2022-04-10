@@ -14,13 +14,13 @@ body {
   flex-direction: column;
 }
 
-a {
-  color: red;
+a.area2 {
+  color: #a9b7d0 !important;
   text-decoration: none;
 }
 
-a:hover {
-  color: pink;
+a.area2:hover {
+  color: #1dddb4 !important;
   text-decoration: none;
 }
 
@@ -30,6 +30,10 @@ a.edit {
 
 a.delete {
   color: red;
+}
+
+span.area {
+  color: #e8edf7;
 }
 
 .container-fluid {
@@ -48,10 +52,17 @@ a.delete {
 
 .container-page {
   /*margin: 0px 30px;*/
-  margin-top: 50px;
+  /* margin-top: 50px; */
   min-height: 100vh;
-  margin-left: 250px;
+  /* margin-left: 250px; */
   transition: 1s all;
+  background: linear-gradient(rgba(1, 1, 31, 0.3), rgba(1, 1, 31, 0.3)),
+    url("https://uogcomp1640tup.herokuapp.com/image/class2.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  padding-left: 0px;
 }
 
 .container {
@@ -254,6 +265,18 @@ a.delete {
 
 .cate-bar-title i {
   margin-right: 10px;
+}
+
+.title {
+  display: flex;
+}
+
+.title h1 {
+  color: white;
+  font-size: 80px;
+  font-weight: bold;
+  padding: 30px;
+  margin: 0;
 }
 
 .cate-bar-link {

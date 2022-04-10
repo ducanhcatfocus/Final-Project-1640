@@ -18,18 +18,24 @@
             "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
             text/plain, application/pdf, image/*" multiple>
     </div>
-     <div class="form-group">
-        <input type="checkbox" name="vehicle1" required>
-        I agree to the terms and conditions <div class="box"><a class="button" href="#popup1">Term and Condition</a></div>
+    
+
+    <div class="form-group">
+        
+        <h5><input type="checkbox" name="vehicle1" required> I agree to the <a class="button" href="/submit_idea/<%= campaign_id %>#popup1">Term and Condition</a></h5>
+            
         <div id="popup1" class="overlay">
             <div class="popup">
                 <h2>Term and Condition</h2>
-                <a class="close" href="#">&times;</a>
+                <a class="close" href="/submit_idea/<%= campaign_id %>">&times;</a>
                 <div class="content">
-                    Federal law provides severe civil and criminal penalties for the unauthorized reproduction, distribution or exhibition of copyrighted motion pictures (Title 17, United States Code, Sections 501 and 508). The Federal Bureau of Infringement (Title 17, United States Code, Section 506                </div>
+                    Federal law provides severe civil and criminal penalties for the unauthorized reproduction, distribution or exhibition of copyrighted motion pictures (Title 17, United States Code, Sections 501 and 508). The Federal Bureau of Infringement (Title 17, United States Code, Section 506                
+                </div>
             </div>
         </div>
     </div>
+
+
     <button class="btn btn-primary">Submit</button>
 </form>
 <%- include('_layout/footer')  %> 
