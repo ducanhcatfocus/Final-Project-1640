@@ -47,8 +47,8 @@
                    idea.createdAt.getDate()%>/<%-
                    idea.createdAt.getFullYear() %> </small> 
               </i>
-            <% if(idea.content.length > 300){ %> 
-            <p ><%- idea.content.substring(0, 300)%> ...</p>
+            <% if(idea.content.length > 40){ %> 
+            <p ><%- idea.content.substring(0, 40)%> ...</p>
             <% }else{ %> 
             <p ><%- idea.content %></p>
             <% } %> 

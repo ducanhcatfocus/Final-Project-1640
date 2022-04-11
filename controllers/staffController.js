@@ -4,6 +4,7 @@ const Idea = require("../models/ideal.model");
 const User = require("../models/user.model");
 const path = require("path");
 const mailer = require("../config/sendMail");
+const { ObjectId } = require("mongodb");
 
 const Pusher = require("pusher");
 
@@ -247,27 +248,6 @@ const staffController = {
   },
   like: async (req, res) => {
     try {
-      await User.findOneAndUpdate(
-        { _id: req.user.id, "viewIdeas.idea_id": req.params.id },
-        { $set: { "viewIdeas.$.isLike": true, "viewIdeas.$.isDislike": false } }
-      );
-      const state = req.query.state;
-      if (state == "true") {
-        await Idea.updateOne(
-          { _id: req.params.id },
-          {
-            $pull: { dislikeBy: req.user.id },
-            $inc: { numberOfDislikes: -1 },
-          }
-        );
-      }
-      await Idea.updateOne(
-        { _id: req.params.id },
-        {
-          $push: { likeBy: req.user.id },
-          $inc: { numberOfLikes: 1 },
-        }
-      );
       await Idea.updateOne(
         { _id: req.params.id },
         {
@@ -275,6 +255,35 @@ const staffController = {
           $inc: { numberOfViews: -1 },
         }
       );
+      const isLike = await Idea.findOne({ _id: req.params.id });
+      if (!isLike.likeBy.includes(ObjectId(req.user.id))) {
+        await User.findOneAndUpdate(
+          { _id: req.user.id, "viewIdeas.idea_id": req.params.id },
+          {
+            $set: {
+              "viewIdeas.$.isLike": true,
+              "viewIdeas.$.isDislike": false,
+            },
+          }
+        );
+        const state = req.query.state;
+        if (state == "true") {
+          await Idea.updateOne(
+            { _id: req.params.id },
+            {
+              $pull: { dislikeBy: req.user.id },
+              $inc: { numberOfDislikes: -1 },
+            }
+          );
+        }
+        await Idea.updateOne(
+          { _id: req.params.id },
+          {
+            $push: { likeBy: req.user.id },
+            $inc: { numberOfLikes: 1 },
+          }
+        );
+      }
       res.redirect("back");
     } catch (error) {
       return res.status(500).send({ msg: error.message });
@@ -282,32 +291,19 @@ const staffController = {
   },
   unlike: async (req, res) => {
     try {
-      await User.updateOne(
-        { _id: req.user.id, "viewIdeas.idea_id": req.params.id },
-        { $set: { "viewIdeas.$.isLike": false } }
-      );
       await Idea.updateOne(
         { _id: req.params.id },
         {
           $pop: { viewBy: 1 },
           $inc: { numberOfViews: -1 },
-          $pull: { likeBy: req.user.id },
-          $inc: { numberOfLikes: -1 },
         }
       );
-      res.redirect("back");
-    } catch (error) {
-      return res.status(500).send({ msg: error.message });
-    }
-  },
-  dislike: async (req, res) => {
-    try {
-      await User.updateOne(
-        { _id: req.user.id, "viewIdeas.idea_id": req.params.id },
-        { "viewIdeas.$.isLike": false, "viewIdeas.$.isDislike": true }
-      );
-      const state = req.query.state;
-      if (state == "true") {
+      const isUnLike = await Idea.findOne({ _id: req.params.id });
+      if (isUnLike.likeBy.includes(ObjectId(req.user.id))) {
+        await User.updateOne(
+          { _id: req.user.id, "viewIdeas.idea_id": req.params.id },
+          { $set: { "viewIdeas.$.isLike": false } }
+        );
         await Idea.updateOne(
           { _id: req.params.id },
           {
@@ -316,14 +312,13 @@ const staffController = {
           }
         );
       }
-
-      await Idea.updateOne(
-        { _id: req.params.id },
-        {
-          $push: { dislikeBy: req.user.id },
-          $inc: { numberOfDislikes: 1 },
-        }
-      );
+      res.redirect("back");
+    } catch (error) {
+      return res.status(500).send({ msg: error.message });
+    }
+  },
+  dislike: async (req, res) => {
+    try {
       await Idea.updateOne(
         { _id: req.params.id },
         {
@@ -331,6 +326,32 @@ const staffController = {
           $inc: { numberOfViews: -1 },
         }
       );
+      const isDisLike = await Idea.findOne({ _id: req.params.id });
+      if (!isDisLike.dislikeBy.includes(ObjectId(req.user.id))) {
+        await User.updateOne(
+          { _id: req.user.id, "viewIdeas.idea_id": req.params.id },
+          { "viewIdeas.$.isLike": false, "viewIdeas.$.isDislike": true }
+        );
+        const state = req.query.state;
+        if (state == "true") {
+          await Idea.updateOne(
+            { _id: req.params.id },
+            {
+              $pull: { likeBy: req.user.id },
+              $inc: { numberOfLikes: -1 },
+            }
+          );
+        }
+
+        await Idea.updateOne(
+          { _id: req.params.id },
+          {
+            $push: { dislikeBy: req.user.id },
+            $inc: { numberOfDislikes: 1 },
+          }
+        );
+      }
+
       res.redirect("back");
     } catch (error) {
       return res.status(500).send({ msg: error.message });
@@ -338,19 +359,27 @@ const staffController = {
   },
   unDislike: async (req, res) => {
     try {
-      await User.updateOne(
-        { _id: req.user.id, "viewIdeas.idea_id": req.params.id },
-        { $set: { "viewIdeas.$.isDislike": false } }
-      );
       await Idea.updateOne(
         { _id: req.params.id },
         {
           $pop: { viewBy: 1 },
           $inc: { numberOfViews: -1 },
-          $pull: { dislikeBy: req.user.id },
-          $inc: { numberOfDislikes: -1 },
         }
       );
+      const isDisLike = await Idea.findOne({ _id: req.params.id });
+      if (isDisLike.dislikeBy.includes(ObjectId(req.user.id))) {
+        await User.updateOne(
+          { _id: req.user.id, "viewIdeas.idea_id": req.params.id },
+          { $set: { "viewIdeas.$.isDislike": false } }
+        );
+        await Idea.updateOne(
+          { _id: req.params.id },
+          {
+            $pull: { dislikeBy: req.user.id },
+            $inc: { numberOfDislikes: -1 },
+          }
+        );
+      }
       res.redirect("back");
     } catch (error) {
       return res.status(500).send({ msg: error.message });

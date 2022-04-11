@@ -143,12 +143,16 @@
               <span class="area">Category</span>
             </h6>
             <ul class="nav flex-column mb-2">
+               <li class="nav-item">
+                <a class="area2 nav-link" href="/campaigns">
+                  All topics 
+                </a>
+              </li>
                <% if(categories != ''){ %>
               <% categories.forEach(function(category, index){ %>
               <li class="nav-item">
                 <a class="area2 nav-link" href="/campaign/category/<%=category._id%>">
-                  <span data-feather="file-text"></span>
-                  <%= category.category %>
+                  <%= category.category %>  <span style=" background-color: #a9b7d0 !important;" class="badge badge-primary badge-pill float-right"><%= category.campaign.length %></span>
                 </a>
               </li>
               <% }) %>
