@@ -23,7 +23,7 @@
         <% }else if(campaign.first_closure <= current && campaign.final_closure
         > current){%>
         <h5 style="color: orange">First closure closed</h5>
-        <%}else{%>
+        <%}else{ var status = '?status=close' %>
         <h5 style="color: red">Closed</h5>
         <% } %>
       
@@ -31,7 +31,7 @@
       <p><a class="btn btn-primary btn-lg" href="/submit_idea/<%= campaign._id %>" role="button">Submit an Idea &raquo;</a></p>
     </button>
     <%}else{%>
-    <p >Deadline to submit ideas has expired</p>
+    <p style="color: red;" >Deadline to submit ideas has expired</p>
     </button>
     <% } %>
   </div>
@@ -52,7 +52,7 @@
             <% }else{ %> 
             <p ><%- idea.content %></p>
             <% } %> 
-            <p><a class="btn btn-secondary" href="/idea_detail/<%= idea._id %>" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="/idea_detail/<%= idea._id %><%= status %> " role="button">View details &raquo;</a></p>
               <p> 
             <%= idea.viewBy.length %> Views
           | <%= idea.likeBy.length %> Likes

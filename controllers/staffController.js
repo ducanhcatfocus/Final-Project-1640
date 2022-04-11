@@ -205,6 +205,7 @@ const staffController = {
         categories,
         idea,
         likeState,
+        status: req.query.status,
       });
     } catch (error) {
       return res.status(500).send({ msg: error.message });

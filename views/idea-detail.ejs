@@ -94,6 +94,7 @@
         <% } %>
       </div>
     </div>
+    <% if(!status){ %> 
     <div
       class="align-items-center p-3 my-3 text-white-50 bg-white rounded shadow-sm"
     >
@@ -112,6 +113,13 @@
           </div>
         </form>
     </div>
+    <% }else{ %> 
+      <div
+      class="align-items-center p-3 my-3 text-white-50 bg-white rounded shadow-sm"
+    >
+      <h4 style="color: red;">The deadline for comment has expired</h1>
+    </div>
+    <% } %> 
   </div>
   <div class="col">
     <div class="my-3 p-3 bg-light rounded shadow-sm" >
