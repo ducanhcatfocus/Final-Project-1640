@@ -10,8 +10,6 @@ const qamController = {
   viewAllCategories: async (req, res) => {
     try {
       const categories = await Category.find({});
-      if (!categories)
-        return res.status(400).send({ msg: "User does not exist" });
       res.render("qam/view-categories", { categories });
     } catch (error) {
       return res.status(500).send({ msg: error.message });
@@ -22,8 +20,10 @@ const qamController = {
       //only qam can create, delete category
       const { name } = req.body;
       const category = await Category.findOne({ category: name });
-      if (category)
-        return res.status(400).send({ msg: "this category is already exists" });
+      if (category) {
+        req.flash("danger", "Category name is already existed");
+        return res.redirect("back");
+      }
       const newCategory = new Category({ category: name });
       await newCategory.save();
       return res.redirect("/qam/");
@@ -68,7 +68,7 @@ const qamController = {
         { category: name }
       );
 
-      req.flash("success", "Account updated");
+      req.flash("success", "Category updated");
       res.redirect("/qam/");
     } catch (error) {
       return res.status(500).json({ msg: error.message });
