@@ -29,10 +29,8 @@
       
     <% if(campaign.first_closure > current){%>
       <p><a class="btn btn-primary btn-lg" href="/submit_idea/<%= campaign._id %>" role="button">Submit an Idea &raquo;</a></p>
-    </button>
     <%}else{%>
     <p style="color: red;" >Deadline to submit ideas has expired</p>
-    </button>
     <% } %>
   </div>
 </div>

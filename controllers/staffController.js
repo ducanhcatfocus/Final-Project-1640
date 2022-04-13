@@ -249,13 +249,6 @@ const staffController = {
   },
   like: async (req, res) => {
     try {
-      await Idea.updateOne(
-        { _id: req.params.id },
-        {
-          $pop: { viewBy: 1 },
-          $inc: { numberOfViews: -1 },
-        }
-      );
       const isLike = await Idea.findOne({ _id: req.params.id });
       if (!isLike.likeBy.includes(ObjectId(req.user.id))) {
         await User.findOneAndUpdate(
@@ -285,13 +278,6 @@ const staffController = {
           }
         );
       }
-      res.redirect("back");
-    } catch (error) {
-      return res.status(500).send({ msg: error.message });
-    }
-  },
-  unlike: async (req, res) => {
-    try {
       await Idea.updateOne(
         { _id: req.params.id },
         {
@@ -299,6 +285,13 @@ const staffController = {
           $inc: { numberOfViews: -1 },
         }
       );
+      res.redirect("back");
+    } catch (error) {
+      return res.status(500).send({ msg: error.message });
+    }
+  },
+  unlike: async (req, res) => {
+    try {
       const isUnLike = await Idea.findOne({ _id: req.params.id });
       if (isUnLike.likeBy.includes(ObjectId(req.user.id))) {
         await User.updateOne(
@@ -313,13 +306,6 @@ const staffController = {
           }
         );
       }
-      res.redirect("back");
-    } catch (error) {
-      return res.status(500).send({ msg: error.message });
-    }
-  },
-  dislike: async (req, res) => {
-    try {
       await Idea.updateOne(
         { _id: req.params.id },
         {
@@ -327,6 +313,13 @@ const staffController = {
           $inc: { numberOfViews: -1 },
         }
       );
+      res.redirect("back");
+    } catch (error) {
+      return res.status(500).send({ msg: error.message });
+    }
+  },
+  dislike: async (req, res) => {
+    try {
       const isDisLike = await Idea.findOne({ _id: req.params.id });
       if (!isDisLike.dislikeBy.includes(ObjectId(req.user.id))) {
         await User.updateOne(
@@ -352,14 +345,6 @@ const staffController = {
           }
         );
       }
-
-      res.redirect("back");
-    } catch (error) {
-      return res.status(500).send({ msg: error.message });
-    }
-  },
-  unDislike: async (req, res) => {
-    try {
       await Idea.updateOne(
         { _id: req.params.id },
         {
@@ -367,6 +352,13 @@ const staffController = {
           $inc: { numberOfViews: -1 },
         }
       );
+      res.redirect("back");
+    } catch (error) {
+      return res.status(500).send({ msg: error.message });
+    }
+  },
+  unDislike: async (req, res) => {
+    try {
       const isDisLike = await Idea.findOne({ _id: req.params.id });
       if (isDisLike.dislikeBy.includes(ObjectId(req.user.id))) {
         await User.updateOne(
@@ -381,6 +373,13 @@ const staffController = {
           }
         );
       }
+      await Idea.updateOne(
+        { _id: req.params.id },
+        {
+          $pop: { viewBy: 1 },
+          $inc: { numberOfViews: -1 },
+        }
+      );
       res.redirect("back");
     } catch (error) {
       return res.status(500).send({ msg: error.message });
