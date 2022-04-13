@@ -1,6 +1,7 @@
 const Category = require("../models/category.model");
 const Ideas = require("../models/ideal.model");
 const Campaign = require("../models/campaign.model");
+const Users = require("../models/user.model");
 const fileSystem = require("fs");
 const fastcsv = require("fast-csv");
 const admzip = require("adm-zip");
@@ -153,7 +154,35 @@ const qamController = {
   getDashboard: async (req, res) => {
     try {
       const ideas = await Ideas.find();
-      res.render("qam/dashboard", { ideas });
+      const ideasPerMonth = await Ideas.aggregate([
+        {
+          $project: {
+            day: { $dayOfMonth: "$createdAt" },
+            month: { $month: "$createdAt" },
+            year: { $year: "$createdAt" },
+          },
+        },
+        {
+          $group: {
+            _id: { month: "$month", year: "$year" },
+            count: { $sum: 1 },
+          },
+        },
+      ]);
+      const allUsers = await Users.find();
+      const submittedUsers = await Users.aggregate([
+        {
+          $match: {
+            submitted: true,
+          },
+        },
+      ]);
+      res.render("qam/dashboard", {
+        ideas,
+        ideasPerMonth,
+        allUsers: allUsers.length,
+        submittedUsers: submittedUsers.length,
+      });
     } catch (error) {
       return res.status(500).send({ msg: error.message });
     }

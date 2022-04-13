@@ -7,14 +7,26 @@
   
     var dataPoints =[]
       <% ideas.forEach(function(i, index){ %>
-			dataPoints[<%= index %>] = { label: "<%- i.title %>" , y: <%= i.viewBy.length %>  },	
+			dataPoints[<%= index %>] = { label: "<%- i.title %>" , y: <%= i.viewBy.length %>  },
             <% }) %>
     
-        console.log(dataPoints)
-		
-    
+ 
+    dataSample =[]
+    for (let step = 0; step < 12; step++) {
+      dataSample[step] = {x: new Date(2022,step), y: 0}
+    }
+  
+    <% ideasPerMonth.forEach(function(i, index){ %> 
+		dataSample[<%= i._id.month-1 %>] = {x: new Date(2022,<%= i._id.month-1 %> ), y: <%= i.count %>},
+    <% }) %> 
+   console.log(dataSample)
+
+   let submittedPercent = <%= (submittedUsers / allUsers)*100 %>
+   console.log(submittedPercent)
+
     window.onload = function () {
 
+//Bar chart
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	theme: "light2", // "light1", "light2", "dark1", "dark2"
@@ -59,14 +71,61 @@ Pusher.logToConsole = true;
         chart.render()
     });
 
+//line chart
+     var chart2 = new CanvasJS.Chart("chartContainer2",
+    {
+      title:{
+        text: "Number of Contribution per month in 2022"
+    },
+    axisX:{
+        title: "Months",
+        gridThickness: 1,
+        valueFormatString: "MMMM"
+    },
+    axisY: {
+        title: "Ideas"
+    },
+    data: [
+    {        
+        type: "line",
+        dataPoints: dataSample
+    }
+    ]
+});
+
+    chart2.render();
+
+//Pie Chart
+var chart3 = new CanvasJS.Chart("chartContainer3", {
+	animationEnabled: true,
+	title: {
+		text: "Percentage of Staff with at least 1 contributes with total Staffs",
+    fontSize: 25,
+	},
+	data: [{
+		type: "pie",
+		startAngle: 240,
+		yValueFormatString: "##0.00\"%\"",
+		indexLabel: "{label} {y}",
+		dataPoints: [
+			{y: submittedPercent, label: "Contributed Staffs"},
+			{y: 100-submittedPercent, label: "Non Contributed Staffs"},
+		]
+	}]
+});
+chart3.render();
+
 }
 
 
    
 </script>
 
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-
+<div id="chartContainer" style="height: 400px; width: 100%;"></div>
+<div>
+  <div id="chartContainer2" style="height: 400px; width: 50%; display:inline; float: left"></div>
+  <div id="chartContainer3" style="height: 400px; width: 50%; float: right; display:inline"></div>
+</div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 </html>

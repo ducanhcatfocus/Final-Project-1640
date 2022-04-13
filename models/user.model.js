@@ -35,6 +35,7 @@ const UserSchema = new Schema({
       isDislike: Boolean,
     },
   ],
+  submitted: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },
 });
 module.exports = mongoose.model("user", UserSchema);
