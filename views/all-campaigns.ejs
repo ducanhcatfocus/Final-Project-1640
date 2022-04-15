@@ -32,10 +32,10 @@ campaigns.forEach(function(campaign, index){ %>
         <% } %> 
         <p class="card-text">
           <i class="bi bi-calendar"></i> First closual date: <%- campaign.first_closure.getMonth() + 1 %>/<%-
-          campaign.final_closure.getDate()%>/<%-
-          campaign.final_closure.getFullYear() %> <%-
-          campaign.final_closure.getHours()%>:<%-
-          campaign.final_closure.getMinutes() %>
+          campaign.first_closure.getDate()%>/<%-
+          campaign.first_closure.getFullYear() %> <%-
+          campaign.first_closure.getHours()%>:<%-
+          campaign.first_closure.getMinutes() %>
         </p>
         <p class="card-text">
           <i class="bi bi-calendar-fill"></i> Final closual date: <%- campaign.final_closure.getMonth() + 1 %>/<%-
