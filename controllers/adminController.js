@@ -43,7 +43,8 @@ const adminController = {
       req.flash("success", "Account Created");
       res.redirect("/admin/accounts");
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
   getCreateAccount: async (req, res) => {
@@ -54,7 +55,8 @@ const adminController = {
         departments,
       });
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -63,7 +65,8 @@ const adminController = {
       const users = await User.find({});
       res.render("admin/view-accounts", { users, title: "all accounts" });
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
   getAccountById: async (req, res) => {
@@ -76,7 +79,8 @@ const adminController = {
       }
       res.render("admin/update-account", { user, departments });
     } catch (error) {
-      return res.status(500).json({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -89,7 +93,7 @@ const adminController = {
       });
       if (user) {
         req.flash("danger", "Email is already existed");
-        res.redirect("/admin/edit_account/" + req.params.id);
+        return res.redirect("/admin/edit_account/" + req.params.id);
       }
 
       await User.findOneAndUpdate(
@@ -100,7 +104,8 @@ const adminController = {
       req.flash("success", "Account updated");
       res.redirect("/admin/accounts");
     } catch (error) {
-      return res.status(500).json({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -109,14 +114,20 @@ const adminController = {
       const user = await User.findById(req.params.id);
       if (!user) {
         req.flash("danger", "Account invalid");
-        res.redirect("/admin/accounts");
+        return res.redirect("/admin/accounts");
+      }
+
+      if (user.email == "admin@gmail.com") {
+        req.flash("danger", "Account invalid");
+        return res.redirect("/admin/accounts");
       }
 
       await user.delete();
       req.flash("success", "Account deleted");
       res.redirect("/admin/accounts");
     } catch (error) {
-      return res.status(500).json({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -130,7 +141,8 @@ const adminController = {
         title: "Departments",
       });
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -148,7 +160,24 @@ const adminController = {
       await newDepartment.save();
       res.redirect("/admin/create_department");
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
+    }
+  },
+
+  deleteDepartment: async (req, res) => {
+    try {
+      const department = await Department.findById(req.params.id);
+      if (!department) {
+        req.flash("danger", "Department invalid");
+        return res.redirect("back");
+      }
+      await department.delete();
+      req.flash("success", "Department deleted");
+      res.redirect("back");
+    } catch (error) {
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -164,7 +193,8 @@ const adminController = {
         title: "Campaign",
       });
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
   getCreateCampaign: async (req, res) => {
@@ -172,7 +202,8 @@ const adminController = {
       const categories = await Category.find({});
       res.render("admin/create-campaign", { categories });
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -205,7 +236,8 @@ const adminController = {
       req.flash("success", "Campaign created");
       return res.redirect("/admin/campaigns");
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -239,7 +271,8 @@ const adminController = {
       req.flash("success", "Campaigns updated");
       res.redirect("/admin/campaigns");
     } catch (error) {
-      return res.status(500).json({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
   getCampaignById: async (req, res) => {
@@ -259,7 +292,8 @@ const adminController = {
         date2rd,
       });
     } catch (error) {
-      return res.status(500).json({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -268,7 +302,7 @@ const adminController = {
       const campaign = await Campaign.findById(req.params.id);
       if (!campaign) {
         req.flash("danger", "Campaign invalid");
-        res.redirect("/admin/campaigns");
+        return res.redirect("/admin/campaigns");
       }
 
       await Category.updateOne(
@@ -279,7 +313,8 @@ const adminController = {
       req.flash("success", "Campaign deleted");
       res.redirect("/admin/campaigns");
     } catch (error) {
-      return res.status(500).json({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 

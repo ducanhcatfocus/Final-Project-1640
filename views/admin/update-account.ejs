@@ -12,10 +12,11 @@
     <div class="form-group">
         <label for="">Role</label>
         <select name="role" id="" class="form-control ">
-            <option value="admin">Admin</option>
-            <option value="staff">Staff</option>
-            <option value="qam">QAM</option>
-            <option value="qac">QAC</option>
+            <option value="<%= user.role %>" selected><%= user.role  %> </option>
+            <option value="admin">admin</option>
+            <option value="staff">staff</option>
+            <option value="qam">qam</option>
+            <option value="qac">qac</option>
         </select>
     </div>
     <div class="form-group">

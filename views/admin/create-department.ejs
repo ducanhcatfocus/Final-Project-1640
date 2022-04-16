@@ -17,6 +17,7 @@
         <tr>
             <th>Id</th>
             <th>Department</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +25,7 @@
               <tr>
                 <td><%- index %></td>
                 <td><%- department.department_name %></td>
+                <td><a href="/admin/department/<%- department._id %>" class="delete" onclick=""><i class="bi bi-trash"></i></a></td>
               </tr>
               <% }) %> 
         <% } %>

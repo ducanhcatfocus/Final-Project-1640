@@ -1,4 +1,5 @@
 const Idea = require("../models/ideal.model");
+const Category = require("../models/category.model");
 
 const ideaController = {
   getList: async (req, res, next) => {
@@ -29,10 +30,10 @@ const ideaController = {
           sort = "?sort=recentidea";
           break;
         default:
-          a = { title: -1 };
+          a = { title: 1 };
           sort = "";
       }
-
+      const categories = await Category.find({});
       Idea.find()
         .skip(perPage * page - perPage)
         .sort(a)
@@ -41,6 +42,7 @@ const ideaController = {
           Idea.countDocuments((err, count) => {
             if (err) return next(err);
             res.render("list-ideas", {
+              categories,
               ideas,
               current: page,
               pages: Math.ceil(count / perPage),
@@ -49,7 +51,10 @@ const ideaController = {
             });
           });
         });
-    } catch (error) {}
+    } catch (error) {
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
+    }
   },
 };
 

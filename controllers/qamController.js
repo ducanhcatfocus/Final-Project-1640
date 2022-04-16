@@ -13,7 +13,8 @@ const qamController = {
       const categories = await Category.find({});
       res.render("qam/view-categories", { categories });
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
   createCategory: async (req, res) => {
@@ -29,7 +30,8 @@ const qamController = {
       await newCategory.save();
       return res.redirect("/qam/");
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -81,7 +83,8 @@ const qamController = {
       const campaigns = await Campaign.find();
       res.render("qam/download", { campaigns });
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
   downloadCSV: async (req, res) => {
@@ -107,7 +110,8 @@ const qamController = {
 
       res.redirect("back");
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
   downloadZip: async (req, res) => {
@@ -147,7 +151,8 @@ const qamController = {
       req.flash("danger", "Topic has no uploaded file");
       res.redirect("back");
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -184,7 +189,8 @@ const qamController = {
         submittedUsers: submittedUsers.length,
       });
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 };

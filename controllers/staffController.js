@@ -25,7 +25,8 @@ const staffController = {
         categories,
       });
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -42,7 +43,8 @@ const staffController = {
         current,
       });
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -60,7 +62,8 @@ const staffController = {
         current,
       });
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -80,7 +83,8 @@ const staffController = {
         current,
       });
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
   getCreateIdea: async (req, res) => {
@@ -102,7 +106,8 @@ const staffController = {
         campaign_id: req.params.id,
       });
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 
@@ -159,7 +164,8 @@ const staffController = {
       req.flash("success", "Campaign created");
       return res.redirect("/campaign_detail/" + campaignId);
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
   getIdeaDetail: async (req, res) => {
@@ -208,7 +214,8 @@ const staffController = {
         status: req.query.status,
       });
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
   comment: async (req, res) => {
@@ -223,11 +230,12 @@ const staffController = {
       }
 
       const user = await User.findOne({ _id: idea.user_id });
-
-      mailer.sendMail(
-        user.email,
-        req.user.email + " commented on your idea at: " + new Date()
-      );
+      if (user) {
+        mailer.sendMail(
+          user.email,
+          req.user.email + " commented on your idea at: " + new Date()
+        );
+      }
 
       await Idea.updateOne(
         { _id: req.params.id },
@@ -244,7 +252,8 @@ const staffController = {
       );
       res.redirect("back");
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
   like: async (req, res) => {
@@ -287,7 +296,8 @@ const staffController = {
       );
       res.redirect("back");
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
   unlike: async (req, res) => {
@@ -315,7 +325,8 @@ const staffController = {
       );
       res.redirect("back");
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
   dislike: async (req, res) => {
@@ -354,7 +365,8 @@ const staffController = {
       );
       res.redirect("back");
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
   unDislike: async (req, res) => {
@@ -382,7 +394,8 @@ const staffController = {
       );
       res.redirect("back");
     } catch (error) {
-      return res.status(500).send({ msg: error.message });
+      req.flash("danger", " 500 INTERNAL SERVER ERROR: " + error.message);
+      return res.redirect("back");
     }
   },
 };

@@ -11,6 +11,7 @@
             <th>Email</th>
             <th>Department</th>
             <th>Role</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -21,8 +22,10 @@
                 <td><%- user.department %> </td>
                 <td><%- user.role %></td>
                 <td>
+                  <% if(user.email != 'admin@gmail.com'){ %> 
                   <a href="/admin/edit_account/<%- user._id %>" class="edit"><i class="bi bi-pencil-square"></i></a>
                   <a href="/admin/delete_account/<%- user._id %>" class="delete" onclick=""><i class="bi bi-trash"></i></a>
+                  <% } %>
                 </td>
               </tr>
               <% }) %> 

@@ -26,6 +26,8 @@ router
   .get(adminController.viewAllDepartments)
   .post(adminController.createDepartment);
 
+router.route("/department/:id").get(adminController.deleteDepartment);
+
 router.route("/campaigns").get(adminController.viewAllCampaigns);
 router
   .route("/create_campaign")
