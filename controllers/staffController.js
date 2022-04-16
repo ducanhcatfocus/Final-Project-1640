@@ -9,10 +9,10 @@ const { ObjectId } = require("mongodb");
 const Pusher = require("pusher");
 
 const pusher = new Pusher({
-  appId: "1375814",
-  key: "76f245f1d43cbfa8bb93",
-  secret: "c53484db43709fabb7d3",
-  cluster: "ap1",
+  appId: process.env.APPIP,
+  key: process.env.KEY,
+  secret: process.env.SECRET,
+  cluster: process.env.CLUSTER,
   useTLS: true,
 });
 
