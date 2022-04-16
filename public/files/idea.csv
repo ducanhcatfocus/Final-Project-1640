@@ -1,5 +1,87 @@
 _id,campaign_id,user_id,title,content,numberOfViews,numberOfLikes,numberOfDislikes,numberOfComments,createdAt
-62529b1caf8ea79361c803d6,62514208357fed535e5c1d59,624d41c2733dd89d774579be, aaaaaaaaaaaaaaaaaaaaaaaaa,"<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-",41,1,0,8,Sun Apr 10 2022 15:53:48 GMT+0700 (Indochina Time)
-62529e46af8ea79361c8047f,62514208357fed535e5c1d59,624d41c2733dd89d774579be, dasdad,"<p>asdasdasd</p>
-",11,0,1,1,Sun Apr 10 2022 16:07:18 GMT+0700 (Indochina Time)
+6254323f48b5b2babb0d740d,62542a0d48b5b2babb0d7315,62542bc348b5b2babb0d736a, Buy,"<p>I gave a file of things to buy to prepare for this event</p>
+",2,3,1,8,Mon Apr 11 2022 20:50:55 GMT+0700 (Indochina Time)
+6254329448b5b2babb0d7423,62542d1048b5b2babb0d73a3,62542bc348b5b2babb0d736a, Buy,"<p>I have given a file of things to buy to prepare for this halloween event</p>
+",29,4,2,3,Mon Apr 11 2022 20:52:20 GMT+0700 (Indochina Time)
+6254454248b5b2babb0d746f,62542e3348b5b2babb0d73ac,62542bc348b5b2babb0d736a, Buy,"<p>I have given a file of things to buy to prepare for this halloween event</p>
+",1,0,0,0,Mon Apr 11 2022 22:12:02 GMT+0700 (Indochina Time)
+625445e848b5b2babb0d7483,62542f4548b5b2babb0d73c8,62542bc348b5b2babb0d736a,List,"<p>I have come up with a schedule file for this event</p>
+",1,0,0,0,Mon Apr 11 2022 22:14:48 GMT+0700 (Indochina Time)
+6254462a48b5b2babb0d74ae,62542fbd48b5b2babb0d73d1,62542bc348b5b2babb0d736a, Buy,"<p>I have come up with a schedule file for this event</p>
+",21,2,1,2,Mon Apr 11 2022 22:15:54 GMT+0700 (Indochina Time)
+62544a6a48b5b2babb0d757f,625448f148b5b2babb0d7523,62542bc348b5b2babb0d736a, Buy,"<p>Here is a list of equipment that I think needs to be changed</p>
+",2,0,0,0,Mon Apr 11 2022 22:34:02 GMT+0700 (Indochina Time)
+62544b0148b5b2babb0d7592,625446d648b5b2babb0d74ce,62542bc348b5b2babb0d736a,Online learning,"<p>I think we should teach online because everyone is staying at home to avoid the epidemic and limit going out during this time.</p>
+",46,3,1,2,Mon Apr 11 2022 22:36:33 GMT+0700 (Indochina Time)
+62544b5a48b5b2babb0d75a4,6254473b48b5b2babb0d74e9,62542bc348b5b2babb0d736a,Live learning,"<p>I think we can already send students to school directly because the covid 19 outbreak has been controlled so it is no longer a concern.</p>
+",12,1,0,1,Mon Apr 11 2022 22:38:02 GMT+0700 (Indochina Time)
+62544bbb48b5b2babb0d75b6,6254484748b5b2babb0d7513,62542bc348b5b2babb0d736a, Change the way teaching,"<p>We should apply the way of studying abroad. Instead of learning a lot of theory, it is better to learn practice</p>
+",8,4,1,1,Mon Apr 11 2022 22:39:39 GMT+0700 (Indochina Time)
+62544c0a48b5b2babb0d75cb,6254498248b5b2babb0d7541,62542bc348b5b2babb0d736a, Confession,"<p>I think we should create a school confession page so that students can interact more with the school and easily collect students&#39; opinions.</p>
+",5,1,0,1,Mon Apr 11 2022 22:40:58 GMT+0700 (Indochina Time)
+6254508748b5b2babb0d76e1,62542a0d48b5b2babb0d7315,62542c1448b5b2babb0d7382, Pool Party,"<p>I think this time we should change the venue because the last time pool party event I received a lot of bad feedback.</p>
+",0,0,0,0,Mon Apr 11 2022 23:00:07 GMT+0700 (Indochina Time)
+625450b748b5b2babb0d76ec,62542a0d48b5b2babb0d7315,62542c1448b5b2babb0d7382, Pool Party,"<p>I&#39;m looking forward to this event pool party</p>
+",3,1,4,0,Mon Apr 11 2022 23:00:55 GMT+0700 (Indochina Time)
+62545920e5e74d2c5bb4633a,625458ebe5e74d2c5bb46326,62542c1448b5b2babb0d7382, Pool Party,"<p><br />
+I&#39;m looking forward to this event pool party</p>
+",7,1,0,2,Mon Apr 11 2022 23:36:48 GMT+0700 (Indochina Time)
+62545938e5e74d2c5bb46345,625458ebe5e74d2c5bb46326,62542c1448b5b2babb0d7382, Pool Party,"<p>I think this time we should change the venue because the last time pool party event I received a lot of bad feedback.</p>
+",4,1,1,1,Mon Apr 11 2022 23:37:12 GMT+0700 (Indochina Time)
+6254594ee5e74d2c5bb46350,625458ebe5e74d2c5bb46326,62542c1448b5b2babb0d7382, Pool Party,"<p>I gave a file of things to buy to prepare for this event</p>
+",0,3,0,3,Mon Apr 11 2022 23:37:34 GMT+0700 (Indochina Time)
+62545a73e5e74d2c5bb46414,62542fbd48b5b2babb0d73d1,62542c1448b5b2babb0d7382, Fashion show,"<p>This is a new event. I think everyone will enjoy and look forward to this event</p>
+",2,0,0,0,Mon Apr 11 2022 23:42:27 GMT+0700 (Indochina Time)
+62545aece5e74d2c5bb46457,62542d1048b5b2babb0d73a3,62542c1448b5b2babb0d7382, Halloween,"<p>I&#39;m really looking forward to this event</p>
+",11,1,0,1,Mon Apr 11 2022 23:44:28 GMT+0700 (Indochina Time)
+62545b91e5e74d2c5bb464a5,625446d648b5b2babb0d74ce,62542c1448b5b2babb0d7382, Learning online,"<p>I think it will be okay. We continue to teach and send students to school normally, online learning at home will make it difficult for students to focus on their studies.</p>
+",4,2,4,1,Mon Apr 11 2022 23:47:13 GMT+0700 (Indochina Time)
+62545daee5e74d2c5bb46640,6254484748b5b2babb0d7513,62542c1448b5b2babb0d7382, Teaching,"<p>We should change, but we should collect ideas from students and then meet together to come up with new and more effective teaching methods.</p>
+",1,1,0,1,Mon Apr 11 2022 23:56:14 GMT+0700 (Indochina Time)
+62545e43e5e74d2c5bb46696,6254498248b5b2babb0d7541,62542c1448b5b2babb0d7382, Confession,"<p>I think it&#39;s not necessary. We should just focus on teaching students instead of spending time on it.</p>
+",4,0,6,1,Mon Apr 11 2022 23:58:43 GMT+0700 (Indochina Time)
+625464dee5e74d2c5bb467bc,625462b5e5e74d2c5bb46771,62542c1448b5b2babb0d7382, I think we will have 4 main events,"<p>08 Apr Workshop: content marketing where should I start?</p>
+
+<p>13-15 Apr GREENWICH show: light of IRIS</p>
+
+<p>16 Apr Company visit: VietNam Airlines</p>
+
+<p>18 Apr Coffe talk no1: Watercolor resonance art</p>
+
+<p>20 Apr Coffe talk no2: Immerse yourself in company culture</p>
+",10,3,0,3,Tue Apr 12 2022 00:26:54 GMT+0700 (Indochina Time)
+62546e67e5e74d2c5bb46890,62546df2e5e74d2c5bb4686b,62542c1448b5b2babb0d7382, Buy,"<p>I sent a list of items to prepare for this event</p>
+",20,3,0,3,Tue Apr 12 2022 01:07:35 GMT+0700 (Indochina Time)
+6254703ce5e74d2c5bb468bc,62546df2e5e74d2c5bb4686b,62542c1448b5b2babb0d7382, Gala Show,"<p>I&#39;m really looking forward to this event</p>
+",6,1,0,1,Tue Apr 12 2022 01:15:24 GMT+0700 (Indochina Time)
+62548e22b522872c4499ae09,62546df2e5e74d2c5bb4686b,624d41c2733dd89d774579be, Just files,"No idea, just files!
+",7,1,0,0,Tue Apr 12 2022 03:22:58 GMT+0700 (Indochina Time)
+62549a74f2011ef39bc5e30b,62546df2e5e74d2c5bb4686b,624d41c2733dd89d774579be, Let buy something,"<p>No content, just files :)</p>",3,0,0,0,Tue Apr 12 2022 04:15:32 GMT+0700 (Indochina Time)
+62549aaef2011ef39bc5e32d,62546df2e5e74d2c5bb4686b,624d41c2733dd89d774579be, View document,"<p>Still no Ideal, just files</p>
+",4,0,1,0,Tue Apr 12 2022 04:16:30 GMT+0700 (Indochina Time)
+62549d2065fbe0ea39664e69,62546df2e5e74d2c5bb4686b,624d41c2733dd89d774579be, No title,"<p>Still no content, just files :))/p>
+",1,0,0,1,Tue Apr 12 2022 04:26:56 GMT+0700 (Indochina Time)
+62556a7cd4282daed89d5400,62542d1048b5b2babb0d73a3,62552710df2603c283597a93, Use $1000 to decoration all area,"<p>I think with $1000 we can buy a lot on thing to re-decorate the company</p>
+",3,0,1,0,Tue Apr 12 2022 19:03:08 GMT+0700 (Indochina Time)
+6256471d019343bd76dd41da,625462b5e5e74d2c5bb46771,624d41dc733dd89d774579ce,No title,"<p>Just file&nbsp;</p>
+",11,1,0,1,Wed Apr 13 2022 10:44:29 GMT+0700 (Indochina Time)
+62568484d89a989b21583215,62542d1048b5b2babb0d73a3,624d41c2733dd89d774579be, No title,"<p>Just files</p>
+",2,1,0,0,Wed Apr 13 2022 15:06:28 GMT+0700 (Indochina Time)
+625685c249eb71b8aea89b90,62542d1048b5b2babb0d73a3,624d41dc733dd89d774579ce, No title,"<p>Just file</p>
+",8,1,1,0,Wed Apr 13 2022 15:11:46 GMT+0700 (Indochina Time)
+625920baca546ade94d506a4,625915c1ca546ade94d50599,624d41e9733dd89d774579d6, hihihhi,"<p>+)ẹp tr4j s0&#39; 2 kh0ng 4j s0&#39; 1</p>
+",1,0,1,1,Fri Apr 15 2022 14:37:30 GMT+0700 (Indochina Time)
+6259237aca546ade94d5073d,625915c1ca546ade94d50599,624d41e9733dd89d774579d6,Samsung Galaxy,"<p><strong>Thiết kế si&ecirc;u mỏng nhẹ Galaxy Tab A7 Lite sở hữu kiểu thiết kế đặc trưng của d&ograve;ng Galaxy Tab A7. Thiết bị sử dụng chất liệu nh&ocirc;m với thiết kế nguy&ecirc;n khối gi&uacute;p cho m&aacute;y trở n&ecirc;n cao cấp hơn d&ugrave; chỉ thuộc ph&acirc;n kh&uacute;c tầm trung gi&aacute; rẻ.</strong></p>
+",3,1,0,1,Fri Apr 15 2022 14:49:14 GMT+0700 (Indochina Time)
+625941bb57d2db9b82f777e0,6259416f57d2db9b82f777cb,624d41e9733dd89d774579d6, Cooking Contest,"<p>abcxyz</p>
+",9,1,0,4,Fri Apr 15 2022 16:58:19 GMT+0700 (Indochina Time)
+6259423757d2db9b82f777fa,6259416f57d2db9b82f777cb,624d41e9733dd89d774579d6, Cooking Contest,"<p>abcvghj</p>
+",1,0,0,0,Fri Apr 15 2022 17:00:23 GMT+0700 (Indochina Time)
+625950fd57d2db9b82f77886,6259416f57d2db9b82f777cb,624d41e9733dd89d774579d6,No title,"<p>&ecirc;ffefgg</p>
+",2,0,0,0,Fri Apr 15 2022 18:03:25 GMT+0700 (Indochina Time)
+6259737fa06a8743446bbfe1,6259416f57d2db9b82f777cb,624d41e9733dd89d774579d6, dfdf,"<p>dfdfdsf</p>
+",3,0,0,0,Fri Apr 15 2022 20:30:39 GMT+0700 (Indochina Time)
+625a4e9484173ce5e6bed9b3,625458ebe5e74d2c5bb46326,624d41e9733dd89d774579d6,organization at Marriot ,"<p>I think we should organization&nbsp; &nbsp; &nbsp; &nbsp;the pool party in Marriot because in there have pool and restaurant&nbsp;&nbsp;</p>
+",0,0,0,0,Sat Apr 16 2022 12:05:24 GMT+0700 (Indochina Time)
+625a4e9b84173ce5e6bed9be,625458ebe5e74d2c5bb46326,624d41e9733dd89d774579d6,organization at Marriot ,"<p>I think we should organization&nbsp; &nbsp; &nbsp; &nbsp;the pool party in Marriot because in there have pool and restaurant&nbsp;&nbsp;</p>
+",1,0,0,0,Sat Apr 16 2022 12:05:31 GMT+0700 (Indochina Time)
